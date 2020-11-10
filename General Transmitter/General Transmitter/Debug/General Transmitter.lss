@@ -1,0 +1,286 @@
+
+General Transmitter.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         000000a2  00800100  0000018c  00000220  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000018c  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000001  008001a2  008001a2  000002c2  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002c2  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002f4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000040  00000000  00000000  00000330  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000007e5  00000000  00000000  00000370  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000006f3  00000000  00000000  00000b55  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000002fe  00000000  00000000  00001248  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000008c  00000000  00000000  00001548  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000003ce  00000000  00000000  000015d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000013b  00000000  00000000  000019a2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000030  00000000  00000000  00001add  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ec e8       	ldi	r30, 0x8C	; 140
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a2 3a       	cpi	r26, 0xA2	; 162
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a2 ea       	ldi	r26, 0xA2	; 162
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a3 3a       	cpi	r26, 0xA3	; 163
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 bd 00 	call	0x17a	; 0x17a <main>
+  9e:	0c 94 c4 00 	jmp	0x188	; 0x188 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <clock_start>:
+#include <avr/io.h>
+#include <util/delay.h>
+uint8_t volatile i=0;
+void clock_start()
+{
+	PORTD|=1<<PORTD7;
+  a6:	5f 9a       	sbi	0x0b, 7	; 11
+  a8:	08 95       	ret
+
+000000aa <clock_stop>:
+}
+void clock_stop()
+{
+	PORTD&=~(1<<PORTD7);
+  aa:	5f 98       	cbi	0x0b, 7	; 11
+  ac:	08 95       	ret
+
+000000ae <Send_data>:
+}
+void Send_data(unsigned char a)
+{
+  ae:	cf 93       	push	r28
+  b0:	df 93       	push	r29
+	i=0;
+  b2:	10 92 a2 01 	sts	0x01A2, r1	; 0x8001a2 <__data_end>
+	for(i=0;i<=7;i++)
+  b6:	10 92 a2 01 	sts	0x01A2, r1	; 0x8001a2 <__data_end>
+  ba:	90 91 a2 01 	lds	r25, 0x01A2	; 0x8001a2 <__data_end>
+  be:	98 30       	cpi	r25, 0x08	; 8
+  c0:	28 f5       	brcc	.+74     	; 0x10c <Send_data+0x5e>
+	{
+		if(((a>>i)&(0x01))==1)
+  c2:	c8 2f       	mov	r28, r24
+  c4:	d0 e0       	ldi	r29, 0x00	; 0
+  c6:	80 91 a2 01 	lds	r24, 0x01A2	; 0x8001a2 <__data_end>
+  ca:	9e 01       	movw	r18, r28
+  cc:	02 c0       	rjmp	.+4      	; 0xd2 <Send_data+0x24>
+  ce:	35 95       	asr	r19
+  d0:	27 95       	ror	r18
+  d2:	8a 95       	dec	r24
+  d4:	e2 f7       	brpl	.-8      	; 0xce <Send_data+0x20>
+  d6:	20 ff       	sbrs	r18, 0
+  d8:	02 c0       	rjmp	.+4      	; 0xde <Send_data+0x30>
+		{
+		PORTD|=1<<PORTD6;
+  da:	5e 9a       	sbi	0x0b, 6	; 11
+  dc:	0a c0       	rjmp	.+20     	; 0xf2 <Send_data+0x44>
+		}
+		else if(((a>>i)&(0x01))==0)
+  de:	80 91 a2 01 	lds	r24, 0x01A2	; 0x8001a2 <__data_end>
+  e2:	9e 01       	movw	r18, r28
+  e4:	02 c0       	rjmp	.+4      	; 0xea <Send_data+0x3c>
+  e6:	35 95       	asr	r19
+  e8:	27 95       	ror	r18
+  ea:	8a 95       	dec	r24
+  ec:	e2 f7       	brpl	.-8      	; 0xe6 <Send_data+0x38>
+  ee:	20 ff       	sbrs	r18, 0
+		{
+		PORTD&=~(1<<PORTD6);	
+  f0:	5e 98       	cbi	0x0b, 6	; 11
+		}
+	
+		clock_start();
+  f2:	0e 94 53 00 	call	0xa6	; 0xa6 <clock_start>
+		clock_stop();
+  f6:	0e 94 55 00 	call	0xaa	; 0xaa <clock_stop>
+	PORTD&=~(1<<PORTD7);
+}
+void Send_data(unsigned char a)
+{
+	i=0;
+	for(i=0;i<=7;i++)
+  fa:	80 91 a2 01 	lds	r24, 0x01A2	; 0x8001a2 <__data_end>
+  fe:	8f 5f       	subi	r24, 0xFF	; 255
+ 100:	80 93 a2 01 	sts	0x01A2, r24	; 0x8001a2 <__data_end>
+ 104:	80 91 a2 01 	lds	r24, 0x01A2	; 0x8001a2 <__data_end>
+ 108:	88 30       	cpi	r24, 0x08	; 8
+ 10a:	e8 f2       	brcs	.-70     	; 0xc6 <Send_data+0x18>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 10c:	3f e9       	ldi	r19, 0x9F	; 159
+ 10e:	86 e8       	ldi	r24, 0x86	; 134
+ 110:	91 e0       	ldi	r25, 0x01	; 1
+ 112:	31 50       	subi	r19, 0x01	; 1
+ 114:	80 40       	sbci	r24, 0x00	; 0
+ 116:	90 40       	sbci	r25, 0x00	; 0
+ 118:	e1 f7       	brne	.-8      	; 0x112 <Send_data+0x64>
+ 11a:	00 c0       	rjmp	.+0      	; 0x11c <Send_data+0x6e>
+ 11c:	00 00       	nop
+	
+		clock_start();
+		clock_stop();
+	}
+	_delay_ms(500);
+}
+ 11e:	df 91       	pop	r29
+ 120:	cf 91       	pop	r28
+ 122:	08 95       	ret
+
+00000124 <Send_string>:
+void Send_string(char *p)
+{
+ 124:	0f 93       	push	r16
+ 126:	1f 93       	push	r17
+ 128:	cf 93       	push	r28
+ 12a:	df 93       	push	r29
+ 12c:	00 d0       	rcall	.+0      	; 0x12e <Send_string+0xa>
+ 12e:	cd b7       	in	r28, 0x3d	; 61
+ 130:	de b7       	in	r29, 0x3e	; 62
+ 132:	8c 01       	movw	r16, r24
+	int volatile c=0;
+ 134:	1a 82       	std	Y+2, r1	; 0x02
+ 136:	19 82       	std	Y+1, r1	; 0x01
+	while((*(p+c))!='\0')
+ 138:	e9 81       	ldd	r30, Y+1	; 0x01
+ 13a:	fa 81       	ldd	r31, Y+2	; 0x02
+ 13c:	e8 0f       	add	r30, r24
+ 13e:	f9 1f       	adc	r31, r25
+ 140:	80 81       	ld	r24, Z
+ 142:	88 23       	and	r24, r24
+ 144:	99 f0       	breq	.+38     	; 0x16c <Send_string+0x48>
+	{
+		Send_data(*(p+c));
+ 146:	e9 81       	ldd	r30, Y+1	; 0x01
+ 148:	fa 81       	ldd	r31, Y+2	; 0x02
+ 14a:	e0 0f       	add	r30, r16
+ 14c:	f1 1f       	adc	r31, r17
+ 14e:	80 81       	ld	r24, Z
+ 150:	0e 94 57 00 	call	0xae	; 0xae <Send_data>
+		c++;
+ 154:	89 81       	ldd	r24, Y+1	; 0x01
+ 156:	9a 81       	ldd	r25, Y+2	; 0x02
+ 158:	01 96       	adiw	r24, 0x01	; 1
+ 15a:	9a 83       	std	Y+2, r25	; 0x02
+ 15c:	89 83       	std	Y+1, r24	; 0x01
+	_delay_ms(500);
+}
+void Send_string(char *p)
+{
+	int volatile c=0;
+	while((*(p+c))!='\0')
+ 15e:	e9 81       	ldd	r30, Y+1	; 0x01
+ 160:	fa 81       	ldd	r31, Y+2	; 0x02
+ 162:	e0 0f       	add	r30, r16
+ 164:	f1 1f       	adc	r31, r17
+ 166:	80 81       	ld	r24, Z
+ 168:	81 11       	cpse	r24, r1
+ 16a:	ed cf       	rjmp	.-38     	; 0x146 <Send_string+0x22>
+	{
+		Send_data(*(p+c));
+		c++;
+	}
+}
+ 16c:	0f 90       	pop	r0
+ 16e:	0f 90       	pop	r0
+ 170:	df 91       	pop	r29
+ 172:	cf 91       	pop	r28
+ 174:	1f 91       	pop	r17
+ 176:	0f 91       	pop	r16
+ 178:	08 95       	ret
+
+0000017a <main>:
+int main(void)
+{
+	DDRD|=1<<PORTD7;
+ 17a:	57 9a       	sbi	0x0a, 7	; 10
+	DDRD|=1<<PORTD6;
+ 17c:	56 9a       	sbi	0x0a, 6	; 10
+	Send_string("No matter how stunning your book cover is, or how amazing the story, choosing the right font for your book can make a big difference when you publish your book.");
+ 17e:	80 e0       	ldi	r24, 0x00	; 0
+ 180:	91 e0       	ldi	r25, 0x01	; 1
+ 182:	0e 94 92 00 	call	0x124	; 0x124 <Send_string>
+ 186:	ff cf       	rjmp	.-2      	; 0x186 <main+0xc>
+
+00000188 <_exit>:
+ 188:	f8 94       	cli
+
+0000018a <__stop_program>:
+ 18a:	ff cf       	rjmp	.-2      	; 0x18a <__stop_program>

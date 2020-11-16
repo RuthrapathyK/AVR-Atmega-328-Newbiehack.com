@@ -10,7 +10,7 @@ unsigned char USART_Receive(void);
 
 void USART_Init(int x)
 {
-	#define F_CPU 8000000
+	#define F_CPU 8000000 		//Change the value according to the clock frequency mine is 8MHz
 	#define BAUDRATE x
 	#define CALC ((F_CPU/16/BAUDRATE)-1)						//Global interrupt clear
 	PRR&=~(1<<PRUSART0);		//Disable power reduction for USART
